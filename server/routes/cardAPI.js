@@ -7,6 +7,11 @@ const sequelize = require('sequelize');
 const db = require('../models');
 const { Card } = db;
 
+router.get('/all', (req, res) => {
+	Card.findAll().then(cards => res.send(cards))
+	.catch(_ => res.send({"success": false}));
+});
+
 router.get('/all/:type', (req, res) => {
 	Card.findAll({where: {type: req.params.type}})
 		.then(cards => res.send(cards))
@@ -25,7 +30,8 @@ router.put('/edit/:id', (req, res) => {
 		{title, type, priority, by, to},
 		{where: {id: req.params.id}}
 	)
-		.then(card => res.send(card))
+		.then(_ => Card.findOne({where: {id: req.params.id}}))
+		.then(card => res.json(card))
 		.catch(_ => res.send({"success": false}));
 });
 
