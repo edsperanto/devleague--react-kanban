@@ -6,11 +6,7 @@ import { connect } from 'react-redux';
 import { addCard, updateCard, updateEditBuff, updateEditing, editCard } from '../../actions';
 
 class Board extends Component {
-	constructor() {
-		super();
-		this.reload();
-	}
-	reload() {
+	componentWillMount() {
 		let oReq = new XMLHttpRequest();
 		oReq.addEventListener('load', _ => {
 			let Cards = JSON.parse(oReq.response);
@@ -18,7 +14,7 @@ class Board extends Component {
 				this.props.onAddCard(id, title, type, priority, by, to);
 			});
 		});
-		oReq.open('GET', `/api/card/all`);
+		oReq.open('GET', '/api/card/all');
 		oReq.send();
 	}
 	onEdit = ({id, title, type, priority, by, to}) => {

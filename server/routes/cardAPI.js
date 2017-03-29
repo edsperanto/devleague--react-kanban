@@ -12,12 +12,6 @@ router.get('/all', (req, res) => {
 	.catch(_ => res.send({"success": false}));
 });
 
-router.get('/all/:type', (req, res) => {
-	Card.findAll({where: {type: req.params.type}})
-		.then(cards => res.send(cards))
-		.catch(_ => res.send({"success": false}));
-});
-
 router.post('/new', ({body: {title, priority, by, to}}, res) => {
 	Card.create({type: "queue-card", title, priority, by, to})
 		.then(card => res.send(card))
