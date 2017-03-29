@@ -5,6 +5,17 @@
 
 > "The Kanban technique emerged in the late 1940s as Toyota’s reimagined approach to manufacturing and engineering. ... The system’s highly visual nature allowed teams to communicate more easily on what work needed to be done and when. It also standardized cues and refined processes, which helped to reduce waste and maximize value." - [via LeanKit.com](http://leankit.com/learn/kanban/kanban-board/)
 
+## Set Up Project
+
+1. `$npm install`
+2. `$sequelize init`
+3. edit 'username', 'password' in /server/config/config.json to match credentials for postgres
+4. create "kanban" database in postgres
+5. `$sequelize db:migrate`
+6. `$npm start` in /server and /client directories separately
+
+If encounter "EADDRINUSE" error in /server directory, run `PORT=xxxx npm start` instead, with "xxxx" being a port number of your choice.
+
 ## Introduction
 Build a Digital Kanban board using:
 - **React** for building the front-end User-Interface (UI)
