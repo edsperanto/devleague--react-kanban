@@ -3,20 +3,9 @@ import './board.css';
 import Card from '../../components/Card';
 
 import { connect } from 'react-redux';
-import { addCard, updateCard, updateEditBuff, updateEditing, editCard } from '../../actions';
+import { updateCard, updateEditBuff, updateEditing, editCard } from '../../actions';
 
 class Board extends Component {
-	componentWillMount() {
-		let oReq = new XMLHttpRequest();
-		oReq.addEventListener('load', _ => {
-			let Cards = JSON.parse(oReq.response);
-			Cards.forEach(({id, title, type, priority, by, to}) => {
-				this.props.onAddCard(id, title, type, priority, by, to);
-			});
-		});
-		oReq.open('GET', '/api/card/all');
-		oReq.send();
-	}
 	onEdit = ({id, title, type, priority, by, to}) => {
 		return (event) => {
 			if(this.props.editing === id) {
@@ -61,10 +50,10 @@ class Board extends Component {
 							{
 								this.props.cards
 									.filter(({type: cardType}) => cardType === `${type}-card`)
-									.map(card => {
+									.map((card, idx) => {
 										const {id, title, type, priority, by, to} = card;
 										return (<Card 
-											key={id}
+											key={idx}
 											id={id}
 											title={title}
 											type={type}
@@ -96,9 +85,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onAddCard: (id, title, type, priority, by, to) => {
-			dispatch(addCard(id, title, type, priority, by, to));
-		},
 		onUpdateCard: (id, title, type, priority, by, to) => {
 			dispatch(updateCard(id, title, type, priority, by, to));
 		},
