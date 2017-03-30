@@ -5,6 +5,8 @@ import MenuBtn from '../../components/MenuBtn';
 import { connect } from 'react-redux';
 import { addCard, updateEditing } from '../../actions';
 
+import {Link} from 'react-router-dom';
+
 class Header extends Component {
 	onCreate = _ => {
 		let oReq = new XMLHttpRequest();
@@ -26,8 +28,9 @@ class Header extends Component {
 	render() {
 		return (
 			<div className="Header">
-				<div className="logo">KANBAN</div>
+				<Link to="/"><div className="logo">KANBAN</div></Link>
 				<div className="menu">
+					<Link to="/about"><MenuBtn text="About" /></Link>
 					<MenuBtn
 						text="+ NEW TASK"
 						onClick={this.onCreate}
