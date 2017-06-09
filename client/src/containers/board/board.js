@@ -15,7 +15,7 @@ class Board extends Component {
 					let {id, title, type, priority, by, to} = data;
 					this.props.onEditCard(id, title, type, priority, by, to);
 				});
-				oReq.open('PUT', `/api/card/edit/${id}`);
+				oReq.open('PUT', `${this.props.baseUrl}/api/card/edit/${id}`);
 				oReq.setRequestHeader("Content-Type", "application/json");
 				oReq.send(JSON.stringify(this.props.editBuff));
 			}
@@ -77,6 +77,7 @@ class Board extends Component {
 
 function mapStateToProps(state) {
 	return { 
+		baseUrl: state.baseUrl,
 		cards: state.cards,
 		editing: state.editing,
 		editBuff: state.editBuff

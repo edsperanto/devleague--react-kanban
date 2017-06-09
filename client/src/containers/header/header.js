@@ -22,7 +22,7 @@ class Header extends Component {
 			this.props.onAddCard(id, title, type, priority, by, to);
 			this.props.onUpdateEditing(id);
 		});
-		oReq.open('POST', '/api/card/new');
+		oReq.open('POST', `${this.props.baseUrl}/api/card/new`);
 		oReq.send(JSON.stringify(blankCard));
 	}
 	render() {
@@ -43,6 +43,7 @@ class Header extends Component {
 
 function mapStateToProps(state) {
 	return {
+		baseUrl: state.baseUrl,
 		cards: state.cards,
 		editing: state.editing
 	}

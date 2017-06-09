@@ -21,7 +21,7 @@ class App extends Component {
 				this.props.onAddCard(id, title, type, priority, by, to);
 			});
 		});
-		oReq.open('GET', '/api/card/all');
+		oReq.open('GET', `${this.props.baseUrl}/api/card/all`);
 		oReq.send();
 	}
   render() {
@@ -39,6 +39,12 @@ class App extends Component {
   }
 }
 
+function mapStateToProps(state) {
+	return { 
+		baseUrl: state.baseUrl,
+	}
+}
+
 function mapDispatchToProps(dispatch) {
 	return {
 		onAddCard: (id, title, type, priority, by, to) => {
@@ -48,6 +54,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(App);
