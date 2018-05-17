@@ -1,7 +1,7 @@
 import {ADD_CARD, UPDATE_CARD, UPDATE_EDIT_BUFF, UPDATE_EDITING, EDIT_CARD} from '../actions';
 
 const initialState = {
-	baseUrl: 'https://edwardgao.com/projects/kanban',
+	baseUrl: 'https://edwardgao.com/projects/kanban/api',
 	cards: [],
 	editing: null,
 	editBuff: {

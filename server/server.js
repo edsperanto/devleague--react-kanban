@@ -4,14 +4,15 @@ const app = express();
 const PORT = process.env.PORT || 4005;
 
 // request handlers
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
 // routes
-
 const cardAPI = require('./routes/cardAPI');
 app.use('/api/card', cardAPI);
 

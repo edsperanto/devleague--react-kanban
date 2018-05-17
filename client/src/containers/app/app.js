@@ -30,8 +30,8 @@ class App extends Component {
 				<Router>
 					<div className="route-container">
 						<Header />
-						<Route exact path="/" component={Board} />
-						<Route path="/about" component={About} />
+						<Route exact path="/projects/kanban/" component={Board} />
+						<Route path="/projects/kanban/about" component={About} />
 					</div>
 				</Router>
       </div>

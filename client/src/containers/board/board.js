@@ -27,7 +27,7 @@ class Board extends Component {
 		let ele = event.target.parentElement.parentElement.parentElement;
 		let oReq = new XMLHttpRequest();
 		oReq.addEventListener('load', _ => ele.remove());
-		oReq.open('DELETE', `/api/card/delete/${ele.dataset.id}`);
+		oReq.open('DELETE', `${this.props.baseUrl}/api/card/delete/${ele.dataset.id}`);
 		oReq.send();
 	}
 	change = (prop) => {
