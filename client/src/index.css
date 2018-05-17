@@ -27,3 +27,11 @@ a {
 html, body, #root {
 	height: 100%;
 }
+
+#about {
+    padding: 1rem;
+}
+
+#about > h1 {
+    margin-bottom: 1rem;
+}
